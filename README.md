@@ -1,6 +1,6 @@
 # GDG Düsseldorf - Android Study Jam
 
-## [Udacity course](https://www.udacity.com/course/android-development-for-beginners--ud837)
+[Udacity course](https://www.udacity.com/course/android-development-for-beginners--ud837)
 
 ## Lessons
 
