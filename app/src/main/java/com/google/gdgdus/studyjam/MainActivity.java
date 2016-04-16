@@ -1,5 +1,8 @@
 package com.google.gdgdus.studyjam;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -39,6 +42,26 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
 
         mLayoutInflater = LayoutInflater.from(this);
+
+        final Button second = ((Button) findViewById(R.id.second));
+        //noinspection ConstantConditions
+        second.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                final Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("textKey", "Hello GDG!");
+
+                final Intent browserIntent =
+                        new Intent(Intent.ACTION_VIEW, Uri.parse("http://google.com"));
+
+                try {
+                    startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    // cry
+                    throw e;
+                }
+            }
+        });
 
         mViewPager.setAdapter(new PagerAdapter() {
             @Override

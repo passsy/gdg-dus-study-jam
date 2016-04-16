@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Study Jam</string>
+    <string name="some_string">Something</string>
 </resources>
