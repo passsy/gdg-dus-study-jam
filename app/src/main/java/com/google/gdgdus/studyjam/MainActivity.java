@@ -4,16 +4,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    int counter = 0;
+    int mCounter = 0;
+
+    private TextView mOutput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mOutput = (TextView) findViewById(R.id.output);
 
         Button button = (Button) findViewById(R.id.button);
         //noinspection ConstantConditions
@@ -21,13 +25,25 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(final View v) {
-                counter = counter + 1;
-                // this code runs on click
-                Toast.makeText(MainActivity.this, "Hello World! " + counter, Toast.LENGTH_SHORT)
-                        .show();
+                mCounter++;
+                updateCounterUi();
             }
         });
 
-        //TODO use button_decrease to decrease the counter and Toast the new output
+        //TODO use button_decrease to decrease the mCounter and Toast the new output
+
+        Button decrease = (Button) findViewById(R.id.button_decrease);
+        //noinspection ConstantConditions
+        decrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                mCounter--;
+                updateCounterUi();
+            }
+        });
+    }
+
+    private void updateCounterUi() {
+        mOutput.setText("Counter: " + mCounter);
     }
 }
