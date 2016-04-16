@@ -34,13 +34,9 @@
         android:layout_height="wrap_content"
         android:text="New Text" />
 
-    <ImageView
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="16dp"
-        android:id="@+id/image"
-        android:padding="8dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/holiday" />
+        android:layout_height="250dp"></android.support.v4.view.ViewPager>
 
 </LinearLayout>

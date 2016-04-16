@@ -1,21 +1,20 @@
 package com.google.gdgdus.studyjam;
 
 import android.os.Bundle;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    int mCounter = 0;
-
-    private ImageView mImage;
 
     private static List<Integer> mImages = Arrays.asList(
             R.drawable.holiday,
@@ -23,16 +22,52 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.cat2
     );
 
+    int mCounter = 0;
+
+    private LayoutInflater mLayoutInflater;
+
     private TextView mOutput;
+
+    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         mOutput = (TextView) findViewById(R.id.output);
-        mImage = (ImageView) findViewById(R.id.image);
+        mViewPager = (ViewPager) findViewById(R.id.view_pager);
+
+        mLayoutInflater = LayoutInflater.from(this);
+
+        mViewPager.setAdapter(new PagerAdapter() {
+            @Override
+            public void destroyItem(ViewGroup container, int position, Object object) {
+                container.removeView((View) object);
+            }
+
+            @Override
+            public int getCount() {
+                return mImages.size();
+            }
+
+            @Override
+            public Object instantiateItem(ViewGroup container, int position) {
+                View itemView = mLayoutInflater.inflate(R.layout.pager_item, container, false);
+
+                ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
+                imageView.setImageResource(mImages.get(position));
+
+                container.addView(itemView);
+
+                return itemView;
+            }
+
+            @Override
+            public boolean isViewFromObject(final View view, final Object object) {
+                return view == object;
+            }
+        });
 
         Button button = (Button) findViewById(R.id.button);
         //noinspection ConstantConditions
@@ -59,15 +94,11 @@ public class MainActivity extends AppCompatActivity {
     private void nextImage() {
         mCounter++;
         mCounter %= mImages.size();
-        mOutput.setText("Image #" + mCounter);
-        mImage.setImageDrawable(getResources().getDrawable(mImages.get(mCounter)));
     }
 
     private void previousImage() {
         mCounter--;
         mCounter += mImages.size();
         mCounter %= mImages.size();
-        mOutput.setText("Image #" + mCounter);
-        mImage.setImageDrawable(getResources().getDrawable(mImages.get(mCounter)));
     }
 }
