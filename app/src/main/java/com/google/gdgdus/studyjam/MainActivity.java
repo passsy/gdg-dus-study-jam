@@ -49,10 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 final Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                intent.putExtra("textKey", "Hello GDG!");
-
-                final Intent browserIntent =
-                        new Intent(Intent.ACTION_VIEW, Uri.parse("http://google.com"));
+                intent.putExtra("imageUrl", "https://pbs.twimg.com/media/CgJ7DhNWsAAGJyy.jpg");
 
                 try {
                     startActivity(intent);
