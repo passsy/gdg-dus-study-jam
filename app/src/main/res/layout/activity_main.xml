@@ -1,71 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:background="#aaaaff"
-    >
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/photo_image_view"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/holiday" />
-
-    <Button
-        android:id="@+id/next_button"
+    <TextView
+        android:id="@+id/hello_world"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello GDG!" />
+        android:text="Hello World!" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="#ffaaaa"
-        android:text="Hello GDG!"
-        android:padding="8dp"
-        android:textSize="24sp"
-        android:gravity="center_vertical"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="#aaffaa"
-        android:layout_margin="8dp"
-        android:text="I'm Pascal!"
-        android:gravity="center_vertical"
-        android:textSize="24sp"
-        />
-
-    <LinearLayout
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:background="#aaaaff"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:background="#ffaaaa"
-            android:text="Hello GDG!"
-            android:padding="8dp"
-            android:textSize="24sp"
-            android:gravity="center_vertical"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:background="#aaffaa"
-            android:padding="8dp"
-            android:text="I'm Pascal! and this text is too long"
-            android:gravity="center_vertical"
-            android:textSize="24sp"
-            />
-    </LinearLayout>
+    <Button
+        android:id="@+id/my_awesome_button"
+        android:text="@string/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
